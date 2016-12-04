@@ -63,6 +63,14 @@ class BoxHelper extends Helper
         }
     }
 
+    public function heading() {
+        $this->start('heading');
+    }
+
+    public function body() {
+        $this->start('body');
+    }
+
     public function render()
     {
         $this->end();
@@ -83,7 +91,8 @@ class BoxHelper extends Helper
 
     protected function _renderTitle()
     {
-        return $this->templater()->format('boxTitle', ['title' => $this->_params['title']]);
+        $title = ($this->getContent('heading')) ?: $this->_params['title'];
+        return $this->templater()->format('boxTitle', ['title' => $title]);
     }
 
     protected function _renderBody()
