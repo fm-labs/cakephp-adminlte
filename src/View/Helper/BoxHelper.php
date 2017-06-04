@@ -55,13 +55,12 @@ class BoxHelper extends Helper
      */
     protected $_params = [];
 
-
     /**
      * @param null $title
      * @param array $params
      */
-    public function create($title = null, $params = []) {
-
+    public function create($title = null, $params = [])
+    {
         $this->clean();
 
         if (is_array($title)) {
@@ -82,14 +81,16 @@ class BoxHelper extends Helper
     /**
      * Start heading block
      */
-    public function heading() {
+    public function heading()
+    {
         $this->start('heading');
     }
 
     /**
      * Start body block
      */
-    public function body() {
+    public function body()
+    {
         $this->start('body');
     }
 
@@ -147,7 +148,6 @@ class BoxHelper extends Helper
         }
         return $this->templater()->format('boxTools', ['tools' => $tools]);
     }
-
 
     /**
      * <div class="box box-default">
