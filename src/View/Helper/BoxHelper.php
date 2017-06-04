@@ -7,12 +7,20 @@ use Bootstrap\View\Helper\ContentBlockHelperTrait;
 use Cake\View\Helper;
 use Cake\View\StringTemplateTrait;
 
+/**
+ * Class BoxHelper
+ *
+ * @package AdminLte\View\Helper
+ */
 class BoxHelper extends Helper
 {
+    /**
+     * @var array
+     */
     public $helpers = ['Html'];
 
-    use StringTemplateTrait;
     use ContentBlockHelperTrait;
+    use StringTemplateTrait;
 
     /**
      * Default config for this class
@@ -31,7 +39,9 @@ class BoxHelper extends Helper
         ],
     ];
 
-
+    /**
+     * @var array
+     */
     protected $_defaultParams = [
         'id' => null,
         'autostart' => true,
@@ -40,10 +50,16 @@ class BoxHelper extends Helper
         'expand' => true
     ];
 
-    //protected $_id;
+    /**
+     * @var array
+     */
     protected $_params = [];
 
 
+    /**
+     * @param null $title
+     * @param array $params
+     */
     public function create($title = null, $params = []) {
 
         $this->clean();
@@ -63,14 +79,23 @@ class BoxHelper extends Helper
         }
     }
 
+    /**
+     * Start heading block
+     */
     public function heading() {
         $this->start('heading');
     }
 
+    /**
+     * Start body block
+     */
     public function body() {
         $this->start('body');
     }
 
+    /**
+     * @return null|string
+     */
     public function render()
     {
         $this->end();
@@ -81,6 +106,9 @@ class BoxHelper extends Helper
         ]);
     }
 
+    /**
+     * @return null|string
+     */
     protected function _renderHeader()
     {
         return $this->templater()->format('boxHeader', [
@@ -89,17 +117,26 @@ class BoxHelper extends Helper
         ]);
     }
 
+    /**
+     * @return null|string
+     */
     protected function _renderTitle()
     {
         $title = ($this->getContent('heading')) ?: $this->_params['title'];
         return $this->templater()->format('boxTitle', ['title' => $title]);
     }
 
+    /**
+     * @return null|string
+     */
     protected function _renderBody()
     {
         return $this->templater()->format('boxBody', ['contents' => $this->getContent('body')]);
     }
 
+    /**
+     * @return null|string
+     */
     protected function _renderTools()
     {
         $tools = '';
